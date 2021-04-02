@@ -12,7 +12,7 @@ import java.security.Principal;
 @RequestMapping("/client/employee")
 public class EmployeeController {
 
-    @GetMapping("newOrder")
+    @GetMapping("newTicket")
     public String newOrder(Principal principal, Model model,
                            @ModelAttribute("text") String ticketText) {
         // --- Stub begin
