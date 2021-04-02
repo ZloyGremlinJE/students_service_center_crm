@@ -12,5 +12,5 @@ public class ClientEmployeeDTO {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private List<ServiceRequest> requests;
+    private List<ServiceRequestDTO> requests;
 }

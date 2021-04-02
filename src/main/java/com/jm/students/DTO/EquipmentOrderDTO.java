@@ -11,5 +11,5 @@ public class EquipmentOrderDTO {
     private EquipmentType equipmentType;
     private String equipmentName;
     private int price;
-    private ServiceRequest request;
+    private ServiceRequestDTO request;
 }

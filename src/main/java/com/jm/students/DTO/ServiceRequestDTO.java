@@ -9,7 +9,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class ServiceRequest {
+public class ServiceRequestDTO {
     private long id;
     private String vehicleNumber;
     private LocalDate dateOfCreate;
