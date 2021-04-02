@@ -39,15 +39,19 @@ public class ServiceRequest {
     @JoinColumn(name = "client_employee_id")
     private ClientEmployee customer;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE
-            , CascadeType.REFRESH, CascadeType.DETACH}, mappedBy = "request")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
     private List<EquipmentOrder> orders;
 
-    public void AddNewEquipmentOrder(EquipmentOrder order) {
+    public void addNewEquipmentOrder(EquipmentOrder order) {
         if (orders == null) {
             orders = new ArrayList<>();
         }
         orders.add(order);
         order.setRequest(this);
+    }
+
+    public void removeEquipmentOrder(EquipmentOrder order) {
+        orders.remove(order);
+        order.setRequest(null);
     }
 }

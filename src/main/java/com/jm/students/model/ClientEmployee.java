@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -32,12 +31,4 @@ public class ClientEmployee {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH}, mappedBy = "customer")
     private List<ServiceRequest> requests;
-
-    public void addNewServiceRequest(ServiceRequest request) {
-        if (requests == null) {
-            requests = new ArrayList<>();
-        }
-        requests.add(request);
-        request.setCustomer(this);
-    }
 }

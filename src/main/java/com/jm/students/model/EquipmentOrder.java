@@ -29,7 +29,7 @@ public class EquipmentOrder {
     private int price;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
-            , CascadeType.REFRESH, CascadeType.DETACH})
+            , CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "service_request_id")
     private ServiceRequest request;
 }
