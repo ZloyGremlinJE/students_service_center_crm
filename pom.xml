@@ -12,7 +12,7 @@
 	<artifactId>students</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service_center_crm</name>
-	<description>Students project crm for service senter</description>
+	<description>Students project crm for service center</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
