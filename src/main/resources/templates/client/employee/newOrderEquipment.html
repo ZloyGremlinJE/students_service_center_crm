@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en" />
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+    <title>New Order</title>
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+
+
+
+        <div class="row col-sm-8 shadow-lg p-3 mb-5 bg-white rounded">
+
+            <div class="col-sm-12">
+                <!-- HEADER -->
+                <header class="p-3 mb-2 bg-dark text-white rounded">
+                    <div class="d-flex justify-content-center">
+                        <div class=" mt-2" id="header_text">
+                            <h3>Заказ на оборудование</h3>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+
+            <div class="input-group mb-3 col-sm-12">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon1">Инженер</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Инженер" aria-label="Инженер"
+                       aria-describedby="addon1">
+            </div>
+
+            <div class="input-group mb-3 col-sm-12">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon2">Заявка клиента</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Заявка клиента" aria-label="Заявка клиента"
+                       aria-describedby="addon2">
+            </div>
+
+            <div class="input-group mb-3 col-sm-12">
+                <label class="input-group-text col-sm-4" for="orderStatus">Состояние заказа</label>
+                <select class="form-select col-sm-8" id="orderStatus">
+                    <option selected>Состояние заказа...</option>
+                    <option value="1">Создан</option>
+                    <option value="2">Отправлен на утверждение</option>
+                    <option value="3">Подтвержден</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3 col-sm-12">
+                <label class="input-group-text col-sm-4" for="equipmentType">Тип оборудования</label>
+                <select class="form-select col-sm-8" id="equipmentType">
+                    <option selected>Тип оборудования...</option>
+                    <option value="1">Тип 1</option>
+                    <option value="2">Тип 2</option>
+                    <option value="3">Тип 3</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3 col-sm-12">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon3">Наименование оборудования</span>
+                </div>
+                <input type="text" class="form-control" id="equipmentName" placeholder="Наименование оборудования"
+                       aria-label="Наименование оборудования"
+                       aria-describedby="addon3">
+            </div>
+
+            <div class="input-group mb-3 col-sm-12">
+                <span class="input-group-text">Стоимость оборудования</span>
+                <input type="text" class="form-control" id="price" aria-label="Стоимость оборудования">
+            </div>
+
+            <div class="col-sm-6">
+                <button type="button" id="button_new_order" class="btn btn-primary col-sm-4">OK
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-2"></div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
