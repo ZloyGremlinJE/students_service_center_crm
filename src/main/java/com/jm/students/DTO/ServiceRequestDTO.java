@@ -1,6 +1,5 @@
 package com.jm.students.DTO;
 
-import com.jm.students.model.RequestType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,10 +9,10 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class ServiceRequestDTO {
-    private long id;
+    private Long id;
     private String vehicleNumber;
     private LocalDate dateOfCreate;
-    private RequestType requestType;
+    private RequestTypeDTO requestTypeDTO;
     private String problem;
     private ClientEmployeeDTO customer;
     private List<EquipmentOrderDTO> orders;

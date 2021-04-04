@@ -8,7 +8,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class ClientEmployeeDTO {
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
