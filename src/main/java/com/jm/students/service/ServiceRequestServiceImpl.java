@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class ServiceRequestServiceImpl implements ServiceRequestService {
 
     private final ServiceRequestRepository requestRepository;
@@ -18,31 +19,26 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
         this.requestRepository = requestRepository;
     }
 
-    @Transactional
     @Override
     public List<ServiceRequest> getAllServiceRequests() {
         return requestRepository.getAllServiceRequests();
     }
 
-    @Transactional
     @Override
     public void saveServiceRequest(ServiceRequest request) {
         requestRepository.saveServiceRequest(request);
     }
 
-    @Transactional
     @Override
     public void updateServiceRequest(ServiceRequest request) {
         requestRepository.updateServiceRequest(request);
     }
 
-    @Transactional
     @Override
     public void deleteServiceRequest(ServiceRequest request) {
         requestRepository.deleteServiceRequest(request);
     }
 
-    @Transactional
     @Override
     public ServiceRequest getServiceRequestById(long id) {
         return requestRepository.getServiceRequestById(id);

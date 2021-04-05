@@ -1,7 +1,6 @@
 package com.jm.students.repository;
 
 import com.jm.students.model.ServiceRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,7 +13,6 @@ public class ServiceRequestRepositoryImpl implements ServiceRequestRepository {
     @PersistenceContext
     private final EntityManager em;
 
-    @Autowired
     public ServiceRequestRepositoryImpl(EntityManager entityManager) {
         em = entityManager;
     }

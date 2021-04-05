@@ -18,20 +18,14 @@ public class ServiceRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
 
-    @Column(name = "vehicle_number")
     private String vehicleNumber;
-
-    @Column(name = "date_of_create")
     private LocalDate dateOfCreate;
 
-    @Column(name = "request_type")
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
 
-    @Column(name = "problem")
     private String problem;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
@@ -40,12 +34,9 @@ public class ServiceRequest {
     private ClientEmployee customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
-    private List<EquipmentOrder> orders;
+    private List<EquipmentOrder> orders = new ArrayList<>();
 
     public void addNewEquipmentOrder(EquipmentOrder order) {
-        if (orders == null) {
-            orders = new ArrayList<>();
-        }
         orders.add(order);
         order.setRequest(this);
     }

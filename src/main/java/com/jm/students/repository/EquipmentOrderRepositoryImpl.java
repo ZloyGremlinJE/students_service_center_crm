@@ -1,7 +1,6 @@
 package com.jm.students.repository;
 
 import com.jm.students.model.EquipmentOrder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,7 +13,6 @@ public class EquipmentOrderRepositoryImpl implements EquipmentOrderRepository {
     @PersistenceContext
     private final EntityManager em;
 
-    @Autowired
     public EquipmentOrderRepositoryImpl(EntityManager entityManager) {
         em = entityManager;
     }

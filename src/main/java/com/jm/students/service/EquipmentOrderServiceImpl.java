@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class EquipmentOrderServiceImpl implements EquipmentOrderService {
 
     private final EquipmentOrderRepository orderRepository;
@@ -19,13 +20,11 @@ public class EquipmentOrderServiceImpl implements EquipmentOrderService {
         this.orderRepository = orderRepository;
     }
 
-    @Transactional
     @Override
     public List<EquipmentOrder> getAllEquipmentOrders() {
         return orderRepository.getAllEquipmentOrders();
     }
 
-    @Transactional
     @Override
     public void saveEquipmentOrder(EquipmentOrder order) {
         ServiceRequest request = order.getRequest();
@@ -34,13 +33,11 @@ public class EquipmentOrderServiceImpl implements EquipmentOrderService {
         orderRepository.saveEquipmentOrder(order);
     }
 
-    @Transactional
     @Override
     public void updateEquipmentOrder(EquipmentOrder order) {
         orderRepository.updateEquipmentOrder(order);
     }
 
-    @Transactional
     @Override
     public void deleteEquipmentOrder(EquipmentOrder order) {
         ServiceRequest request = order.getRequest();
@@ -49,7 +46,6 @@ public class EquipmentOrderServiceImpl implements EquipmentOrderService {
         orderRepository.deleteEquipmentOrder(order);
     }
 
-    @Transactional
     @Override
     public EquipmentOrder getEquipmentOrderById(long id) {
         return orderRepository.getEquipmentOrderById(id);
