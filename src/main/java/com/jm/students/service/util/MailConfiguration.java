@@ -9,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
-
 @Configuration
 public class MailConfiguration {
 
@@ -38,7 +37,4 @@ public class MailConfiguration {
         String propVal = env.getProperty(propName);
         return Integer.parseInt(propVal);
     }
-
-
-
 }

@@ -7,13 +7,14 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmailServiceImpl implements EmailService{
+public class EmailServiceImpl implements EmailService {
     @Autowired
     private Environment env;
     @Autowired
-    JavaMailSender mailSender;
+    private JavaMailSender mailSender;
+
     @Override
-    public void sendSimpleMessage(String to, String subject, String text) {
+    public void email(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(env.getProperty("spring.mail.username"));
