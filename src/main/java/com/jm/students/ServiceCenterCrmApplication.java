@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ServiceCenterCrmApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(ServiceCenterCrmApplication.class, args);
     }
 
