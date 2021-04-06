@@ -1,13 +1,15 @@
 package com.jm.students.DTO;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class ServiceRequestDTO {
     private Long id;
     private String vehicleNumber;
