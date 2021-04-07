@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Component
 public interface GeocodingService {
-    Optional<Location> getLocation(String address) throws JsonProcessingException;
+    Optional<Location> getLocation(String address);
 }
