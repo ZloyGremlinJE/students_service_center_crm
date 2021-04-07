@@ -12,7 +12,7 @@
 	<artifactId>students</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service_center_crm</name>
-	<description>Students project crm for service senter</description>
+	<description>Students project crm for service center</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -51,6 +51,20 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>1.4.2.Final</version>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
@@ -59,6 +73,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.4.3</version>
 				<configuration>
 					<excludes>
 						<exclude>
