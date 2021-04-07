@@ -25,7 +25,7 @@ public class GeocodingServiceHereImpl implements GeocodingService {
     }
 
     @Override
-    public Optional<Location> getLocation(String address) throws JsonProcessingException {
+    public Optional<Location> getLocation(String address) {
         Optional<Location> result = Optional.empty();
         RestTemplate restTemplate = new RestTemplate();
         String url = hereMapsApiUrl +
@@ -35,11 +35,16 @@ public class GeocodingServiceHereImpl implements GeocodingService {
                 hereMapsApiKey;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         if (response.getStatusCode() == HttpStatus.OK) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode root = objectMapper.readValue(response.getBody(), JsonNode.class);
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode position = objectMapper.readTree(response.getBody()).get("items").get(0).get("position");
+                double lat = position.get("lat").asDouble();
+                double lng = position.get("lng").asDouble();
+                return Optional.of(new Location(lat, lng));
+            } catch (JsonProcessingException ignored) {
+            }
         }
-
-
         return result;
+
     }
 }
