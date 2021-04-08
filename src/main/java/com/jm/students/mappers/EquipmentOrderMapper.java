@@ -1,5 +1,7 @@
 package com.jm.students.mappers;
 
+import com.jm.students.DTO.EquipmentOrderDTO;
+import com.jm.students.model.EquipmentOrder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
