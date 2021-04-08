@@ -1,14 +1,16 @@
 package com.jm.students.service.quartz;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import com.jm.students.model.quartz.TimerInfo;
+import org.quartz.*;
 
 
 
 public class ProjectJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("Create job...");
+        String key = jobExecutionContext.getJobDetail().getKey().getName();
+        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
+        TimerInfo timerInfo = (TimerInfo) jobDataMap.get(key.toString());
+        System.out.println(timerInfo.getCallbackData());
     }
 }

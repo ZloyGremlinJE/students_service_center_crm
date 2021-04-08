@@ -11,11 +11,13 @@ public final class TimerUtils {
 
     public  JobDetail buildJobDetail(final Class jobClass, final TimerInfo info) {
         final JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put(jobClass.getSimpleName(), info);
+//        jobDataMap.put(jobClass.getSimpleName(), info);
+        jobDataMap.put(info.getNameOfWork(), info);
 
         return JobBuilder
                 .newJob(jobClass)
-                .withIdentity(jobClass.getSimpleName())
+//                .withIdentity(jobClass.getSimpleName())
+                .withIdentity(info.getNameOfWork())
                 .setJobData(jobDataMap)
                 .build();
     }
@@ -35,7 +37,8 @@ public final class TimerUtils {
 
                 return TriggerBuilder
                         .newTrigger()
-                        .withIdentity(jobClass.getSimpleName())
+//                        .withIdentity(jobClass.getSimpleName())
+                        .withIdentity(info.getNameOfWork())
                         .withSchedule(builder)
                         .startAt(new Date(System.currentTimeMillis() + info.getInitialOffSetMs()))
                         .build();
@@ -43,14 +46,16 @@ public final class TimerUtils {
             case SIMPLE_EVERY_DAY :
                 return TriggerBuilder
                         .newTrigger()
-                        .withIdentity(jobClass.getSimpleName())
+//                        .withIdentity(jobClass.getSimpleName())
+                        .withIdentity(info.getNameOfWork())
                         .withSchedule(CronScheduleBuilder
                                 .dailyAtHourAndMinute(info.getHours(), info.getMinutes()))
                         .build();
             case ONE_FOR_LOCAL_DATE:
                 return TriggerBuilder
                         .newTrigger()
-                        .withIdentity(jobClass.getSimpleName())
+//                        .withIdentity(jobClass.getSimpleName())
+                        .withIdentity(info.getNameOfWork())
                         .withSchedule(CronScheduleBuilder.cronSchedule(info.getLocaldate()))
                         .build();
             default:

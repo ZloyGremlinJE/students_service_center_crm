@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TimerInfo {
+    private String nameOfWork;
     private int totalFireCount;
     private boolean runForever;
     private long repeatIntervalMs;
