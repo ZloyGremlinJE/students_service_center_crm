@@ -1,8 +1,6 @@
 package com.jm.students.repository;
 
-
 import com.jm.students.model.organization.AbstractOrganization;
-
 import java.util.List;
 
 public interface AbstractOrganizationRepository {
