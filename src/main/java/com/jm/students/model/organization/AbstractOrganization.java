@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "organization")
+@Table(name = "organizations")
 public abstract class AbstractOrganization {
 
     @Id

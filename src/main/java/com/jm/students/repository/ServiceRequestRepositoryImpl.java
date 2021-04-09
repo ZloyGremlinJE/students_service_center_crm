@@ -34,7 +34,7 @@ public class ServiceRequestRepositoryImpl implements ServiceRequestRepository {
 
     @Override
     public void deleteServiceRequest(ServiceRequest request) {
-        em.remove(em.contains(request)? request : em.merge(request));
+        em.remove(em.contains(request) ? request : em.merge(request));
     }
 
     @Override

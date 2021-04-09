@@ -18,7 +18,7 @@ public class ServiceRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String vehicleNumber;
     private LocalDate dateOfCreate;
