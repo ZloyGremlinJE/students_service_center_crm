@@ -1,17 +1,16 @@
 package com.jm.students.service.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
-    @Autowired
-    private Environment env;
-    @Autowired
-    private JavaMailSender mailSender;
+    private final Environment env;
+    private final JavaMailSender mailSender;
 
     @Override
     public void email(String to, String subject, String text) {
