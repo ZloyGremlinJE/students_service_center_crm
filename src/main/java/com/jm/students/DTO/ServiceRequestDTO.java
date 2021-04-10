@@ -1,5 +1,6 @@
 package com.jm.students.DTO;
 
+import com.jm.students.enums.StatusRequestType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,4 +19,5 @@ public class ServiceRequestDTO {
     private String problem;
     private ClientEmployeeDTO customer;
     private List<EquipmentOrderDTO> orders;
+    private StatusRequestType statusRequestType;
 }

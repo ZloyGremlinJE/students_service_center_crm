@@ -1,7 +1,7 @@
 package com.jm.students.enums;
 
 /**
- * Перечисление для состояний заявок в сервисном центре
+ * Перечисление для состояний заявок
  */
 public enum StatusRequestType {
     NEW,
