@@ -15,7 +15,6 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void email(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
-
         message.setFrom(env.getProperty("spring.mail.username"));
         message.setTo(to);
         message.setSubject(subject);
