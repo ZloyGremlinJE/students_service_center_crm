@@ -48,24 +48,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findUserByEmailFetchRoles(String email) {
+    public User findUserByEmail(String email) {
 
-        Query userQuery = em.createQuery("select u from User u where u.email = :userEmail");
-        userQuery.setParameter("userEmail", email);
+        Query query = em.createQuery("select u from User u where u.email = :userEmail");
+        query.setParameter("userEmail", email);
 
-        User user = (User) userQuery.getSingleResult();
-
-        Query rolesQuery = em.createNativeQuery(
-                "SELECT role_name FROM user_roles WHERE user_id = ?");
-        rolesQuery.setParameter(1, user.getId());
-
-        Set<String> roleNames = new HashSet<>(rolesQuery.getResultList());
-        Set<Role> roles = roleNames.stream()
-                .map(roleName -> Role.valueOf(Role.class, roleName))
-                .collect(Collectors.toSet());
-
-        user.setRoles(roles);
-
-        return user;
+        return (User) query.getSingleResult();
     }
 }

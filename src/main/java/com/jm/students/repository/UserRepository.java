@@ -10,5 +10,5 @@ public interface UserRepository {
     void updateUser(User user);
     void deleteUser(User user);
     User getUserById(Long id);
-    User findUserByEmailFetchRoles(String email);
+    User findUserByEmail(String email);
 }

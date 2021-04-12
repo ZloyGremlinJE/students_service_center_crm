@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
+import java.util.Collections;
 
 @NoArgsConstructor
 @Getter
@@ -32,18 +32,13 @@ public class User implements UserDetails {
     @JoinColumn(name = "organization_id")
     private AbstractOrganization organization;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-//    @AttributeOverrides({
-//            @AttributeOverride(name = "name", column = @Column(name = "role_name"))})
     @Enumerated(EnumType.STRING)
-    @Column(name = "role_name")
-    private Set<Role> roles;
+    private Role role;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return Collections.singletonList(role);
     }
 
     @Override
