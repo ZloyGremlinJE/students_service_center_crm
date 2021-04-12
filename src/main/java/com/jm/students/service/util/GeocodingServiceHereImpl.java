@@ -6,10 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jm.students.model.Location;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
+@Component
 public class GeocodingServiceHereImpl implements GeocodingService {
 
     private String hereMapsApiKey = "vLzuZVgjeNRt1lGlVutRAQWCli2hPzcHenxs9gcxdtk";
