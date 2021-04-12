@@ -1,16 +1,8 @@
 package com.jm.students.repository;
 
+
 import com.jm.students.model.organization.AbstractOrganization;
-import java.util.List;
 
-public interface AbstractOrganizationRepository {
-    AbstractOrganization findOne(long id);
+public interface AbstractOrganizationRepository extends AbstractEntityRepository<AbstractOrganization> {
 
-    List<AbstractOrganization> findAll();
-
-    void create(AbstractOrganization entity);
-
-    AbstractOrganization update(AbstractOrganization entity);
-
-    void deleteById(long entityId);
 }

@@ -2,38 +2,22 @@ package com.jm.students.service;
 
 import com.jm.students.model.organization.AbstractOrganization;
 import com.jm.students.repository.AbstractOrganizationRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
-public class AbstractOrganizationServiceImpl implements AbstractOrganizationService {
+public class AbstractOrganizationServiceImpl extends AbstractEntityServiceImpl<AbstractOrganization> implements AbstractOrganizationService {
 
-    private final AbstractOrganizationRepository organizationRepository;
+    private final AbstractOrganizationRepository organizationDAO;
 
-    @Override
-    public AbstractOrganization findOne(long id) {
-        return organizationRepository.findOne(id);
+    @Autowired
+    public AbstractOrganizationServiceImpl(AbstractOrganizationRepository organizationDAO) {
+        super(organizationDAO);
+        this.organizationDAO = organizationDAO;
     }
 
-    @Override
-    public List<AbstractOrganization> findAll() {
-        return organizationRepository.findAll();
-    }
 
-    @Override
-    public void create(AbstractOrganization entity) {
-        organizationRepository.create(entity);
-    }
-
-    @Override
-    public AbstractOrganization update(AbstractOrganization entity) {
-        return organizationRepository.update(entity);
-    }
-
-    @Override
-    public void deleteById(long entityId) { organizationRepository.deleteById(entityId); }
 }
