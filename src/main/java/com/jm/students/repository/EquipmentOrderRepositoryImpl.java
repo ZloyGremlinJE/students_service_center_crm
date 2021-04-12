@@ -41,4 +41,9 @@ public class EquipmentOrderRepositoryImpl implements EquipmentOrderRepository {
     public EquipmentOrder getEquipmentOrderById(long id) {
         return em.find(EquipmentOrder.class, id);
     }
+
+    @Override
+    public void deleteEquipmentOrderById(Long id) {
+        em.createQuery("delete from EquipmentOrder where id = :id").setParameter("id", id).executeUpdate();
+    }
 }
