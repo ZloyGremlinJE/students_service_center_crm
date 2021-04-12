@@ -31,7 +31,7 @@ public class ServiceRequest {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "client_employee_id")
-    private ClientEmployee customer;
+    private User customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
     private List<EquipmentOrder> orders = new ArrayList<>();
