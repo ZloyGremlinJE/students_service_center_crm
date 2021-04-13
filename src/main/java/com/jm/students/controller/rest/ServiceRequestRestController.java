@@ -5,6 +5,7 @@ import com.jm.students.mappers.ServiceRequestMapper;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.service.ServiceRequestService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("serviceRequests")
 public class ServiceRequestRestController {
+
     private final ServiceRequestService serviceRequestService;
     private final ServiceRequestMapper serviceRequestMapper;
 

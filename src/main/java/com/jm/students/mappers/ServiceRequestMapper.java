@@ -5,6 +5,7 @@ import com.jm.students.model.ServiceRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring", uses = EquipmentOrderMapper.class)
 public interface ServiceRequestMapper {
