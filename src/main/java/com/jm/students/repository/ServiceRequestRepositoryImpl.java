@@ -24,6 +24,7 @@ public class ServiceRequestRepositoryImpl implements ServiceRequestRepository {
 
     @Override
     public void saveServiceRequest(ServiceRequest request) {
+        request.setCustomer(em.merge(request.getCustomer()));
         em.persist(request);
     }
 
