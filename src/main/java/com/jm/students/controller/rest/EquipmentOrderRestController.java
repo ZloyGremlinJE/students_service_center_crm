@@ -5,7 +5,6 @@ import com.jm.students.mappers.EquipmentOrderMapper;
 import com.jm.students.model.EquipmentOrder;
 import com.jm.students.service.EquipmentOrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("equipmentOrders")
 public class EquipmentOrderRestController {
-
     private final EquipmentOrderService equipmentOrderService;
     private final EquipmentOrderMapper equipmentOrderMapper;
-
 
     @GetMapping("/{id}")
     public ResponseEntity<EquipmentOrderDTO> getOneEquipmentOrder(@PathVariable Long id) {
