@@ -10,4 +10,5 @@ public interface EquipmentOrderService {
     void updateEquipmentOrder(EquipmentOrder order);
     void deleteEquipmentOrder(EquipmentOrder order);
     EquipmentOrder getEquipmentOrderById(long id);
+    void deleteEquipmentOrderByID(Long id);
 }
