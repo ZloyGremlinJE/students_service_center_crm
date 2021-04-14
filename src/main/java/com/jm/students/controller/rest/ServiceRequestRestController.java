@@ -65,4 +65,14 @@ public class ServiceRequestRestController {
         }
     }
 
+      @PutMapping("/updateStatusRequest/{id}")
+    public ResponseEntity<StatusRequestType> updateStatusRequestType(@PathVariable Long id,
+                                                                     @RequestBody StatusRequestType statusRequestType) {
+        try {
+            serviceRequestService.updateStatusRequestType(id, statusRequestType);
+            return new ResponseEntity<>(statusRequestType, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
