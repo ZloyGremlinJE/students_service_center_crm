@@ -1,5 +1,6 @@
 package com.jm.students.model;
 
+import com.jm.students.enums.StatusRequestType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,9 @@ public class ServiceRequest {
 
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
+
+    @Enumerated(EnumType.STRING)
+    private StatusRequestType statusRequestType;
 
     private String problem;
 

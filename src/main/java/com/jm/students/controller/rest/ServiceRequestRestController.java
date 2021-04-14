@@ -1,6 +1,7 @@
 package com.jm.students.controller.rest;
 
 import com.jm.students.DTO.ServiceRequestDTO;
+import com.jm.students.enums.StatusRequestType;
 import com.jm.students.mappers.ServiceRequestMapper;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.service.ServiceRequestService;
@@ -65,4 +66,14 @@ public class ServiceRequestRestController {
         }
     }
 
+      @PutMapping("/updateStatusRequest/{id}")
+    public ResponseEntity<StatusRequestType> updateStatusRequestType(@PathVariable Long id,
+                                                                     @RequestBody StatusRequestType statusRequestType) {
+        try {
+            serviceRequestService.updateStatusRequestType(id, statusRequestType);
+            return new ResponseEntity<>(statusRequestType, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
