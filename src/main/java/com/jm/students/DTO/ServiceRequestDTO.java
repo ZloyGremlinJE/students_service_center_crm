@@ -1,6 +1,7 @@
 package com.jm.students.DTO;
 
-import com.jm.students.enums.StatusRequestType;
+import com.jm.students.model.RequestType;
+import com.jm.students.model.StatusRequestType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,9 +16,9 @@ public class ServiceRequestDTO {
     private Long id;
     private String vehicleNumber;
     private LocalDate dateOfCreate;
-    private RequestTypeDTO requestTypeDTO;
+    private RequestType requestTypeDTO;
     private String problem;
-    private ClientEmployeeDTO customer;
+    private UserDTO customer;
     private List<EquipmentOrderDTO> orders;
     private StatusRequestType statusRequestType;
 }

@@ -1,7 +1,7 @@
 package com.jm.students.controller.rest;
 
 import com.jm.students.DTO.ServiceRequestDTO;
-import com.jm.students.enums.StatusRequestType;
+import com.jm.students.model.StatusRequestType;
 import com.jm.students.mappers.ServiceRequestMapper;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.service.ServiceRequestService;

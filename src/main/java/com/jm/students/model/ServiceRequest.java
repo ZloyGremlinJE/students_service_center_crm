@@ -1,6 +1,5 @@
 package com.jm.students.model;
 
-import com.jm.students.enums.StatusRequestType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,7 +33,7 @@ public class ServiceRequest {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "client_employee_id")
+    @JoinColumn(name = "user_id")
     private User customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
