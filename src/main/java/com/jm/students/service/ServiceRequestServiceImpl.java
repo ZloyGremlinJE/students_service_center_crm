@@ -11,40 +11,16 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ServiceRequestServiceImpl implements ServiceRequestService {
+public class ServiceRequestServiceImpl extends AbstractEntityServiceImpl<ServiceRequest>
+        implements ServiceRequestService {
 
     private final ServiceRequestRepository requestRepository;
 
     @Autowired
     public ServiceRequestServiceImpl(ServiceRequestRepository requestRepository) {
+        super(requestRepository);
         this.requestRepository = requestRepository;
     }
-
-    @Override
-    public List<ServiceRequest> getAllServiceRequests() {
-        return requestRepository.getAllServiceRequests();
-    }
-
-    @Override
-    public void saveServiceRequest(ServiceRequest request) {
-        requestRepository.saveServiceRequest(request);
-    }
-
-    @Override
-    public void updateServiceRequest(ServiceRequest request) {
-        requestRepository.updateServiceRequest(request);
-    }
-
-    @Override
-    public void deleteServiceRequest(ServiceRequest request) {
-        requestRepository.deleteServiceRequest(request);
-    }
-
-    @Override
-    public ServiceRequest getServiceRequestById(long id) {
-        return requestRepository.getServiceRequestById(id);
-    }
-
     /**
      * Метод находит заявку по {@param id},
      * устанавливает этой заявке новый статус {@param statusRequestType}
@@ -54,8 +30,8 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
      */
     @Override
     public void updateStatusRequestType(long id, StatusRequestType statusRequestType) {
-        ServiceRequest serviceRequest = getServiceRequestById(id);
+        ServiceRequest serviceRequest = findById(id);
         serviceRequest.setStatusRequestType(statusRequestType);
-        updateServiceRequest(serviceRequest);
+        update(serviceRequest);
     }
 }
