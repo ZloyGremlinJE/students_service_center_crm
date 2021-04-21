@@ -50,4 +50,9 @@ public class EquipmentOrderServiceImpl implements EquipmentOrderService {
     public EquipmentOrder getEquipmentOrderById(long id) {
         return orderRepository.getEquipmentOrderById(id);
     }
+
+    @Override
+    public void deleteEquipmentOrderByID(Long id) {
+        orderRepository.deleteEquipmentOrderById(id);
+    }
 }

@@ -10,4 +10,5 @@ public interface UserService {
     void updateUser(User user);
     void deleteUser(User user);
     User getUserById(Long id);
+public interface UserService extends AbstractEntityService<User> {
 }

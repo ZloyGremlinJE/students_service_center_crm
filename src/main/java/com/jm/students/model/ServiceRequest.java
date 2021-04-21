@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -26,11 +27,17 @@ public class ServiceRequest {
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
 
+    @Enumerated(EnumType.STRING)
+    private StatusRequestType statusRequestType;
+
     private String problem;
+
+    @OneToMany(mappedBy = "serviceRequest")
+    private Set<ServiseRequestComment> comments;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "client_employee_id")
+    @JoinColumn(name = "user_id")
     private User customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
@@ -44,5 +51,15 @@ public class ServiceRequest {
     public void removeEquipmentOrder(EquipmentOrder order) {
         orders.remove(order);
         order.setRequest(null);
+    }
+
+    public void addNewComment(ServiseRequestComment serviseRequestComment) {
+        comments.add(serviseRequestComment);
+        serviseRequestComment.setServiceRequest(this);
+    }
+
+    public void removeComment(ServiseRequestComment serviseRequestComment) {
+        comments.remove(serviseRequestComment);
+        serviseRequestComment.setServiceRequest(null);
     }
 }

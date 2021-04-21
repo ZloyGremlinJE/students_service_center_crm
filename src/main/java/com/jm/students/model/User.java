@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -34,6 +35,10 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<ServiseRequestComment> comments;
+
 
 
     @Override

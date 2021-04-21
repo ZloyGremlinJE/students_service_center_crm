@@ -46,5 +46,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userRepository.getUserById(id);
+import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
+public class UserServiceImpl extends AbstractEntityServiceImpl<User>  implements UserService {
+
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        super(userRepository);
+        this.userRepository = userRepository;
     }
 }

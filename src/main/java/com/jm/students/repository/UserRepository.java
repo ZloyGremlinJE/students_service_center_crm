@@ -11,4 +11,5 @@ public interface UserRepository {
     void deleteUser(User user);
     User getUserById(Long id);
     User findUserByEmail(String email);
+public interface UserRepository extends AbstractEntityRepository<User> {
 }

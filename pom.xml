@@ -14,6 +14,7 @@
 	<name>service_center_crm</name>
 	<description>Students project crm for service center</description>
 	<properties>
+<!--		<m2e.apt.activation>jdt_apt</m2e.apt.activation>-->
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
@@ -25,7 +26,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -49,6 +53,11 @@
 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.4.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>1.4.2.Final</version>
 		</dependency>
@@ -67,6 +76,20 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.3.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.telegram/telegrambots-spring-boot-starter -->
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-spring-boot-starter</artifactId>
+			<version>5.1.1</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

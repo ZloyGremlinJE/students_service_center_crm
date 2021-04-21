@@ -1,5 +1,6 @@
 package com.jm.students.service;
 
+import com.jm.students.model.StatusRequestType;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.repository.ServiceRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,19 @@ public class ServiceRequestServiceImpl implements ServiceRequestService {
     @Override
     public ServiceRequest getServiceRequestById(long id) {
         return requestRepository.getServiceRequestById(id);
+    }
+
+    /**
+     * Метод находит заявку по {@param id},
+     * устанавливает этой заявке новый статус {@param statusRequestType}
+     * и изменяет заявку в базе
+     * @param id идентификатор заявки
+     * @param statusRequestType новый статус заявки
+     */
+    @Override
+    public void updateStatusRequestType(long id, StatusRequestType statusRequestType) {
+        ServiceRequest serviceRequest = getServiceRequestById(id);
+        serviceRequest.setStatusRequestType(statusRequestType);
+        updateServiceRequest(serviceRequest);
     }
 }
