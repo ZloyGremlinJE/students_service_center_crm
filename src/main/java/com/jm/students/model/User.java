@@ -28,6 +28,7 @@ public class User implements UserDetails {
     private String lastName;
     private String password;
     private String email;
+    private String telegramChatId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
@@ -40,6 +41,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.EAGER)
     List<ServiceRequest> requestList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<ServiceRequestComment> comments;
+
+
     public void addNewServiceRequest(ServiceRequest request) {
         requestList.add(request);
         request.setCustomer(this);
@@ -50,9 +55,6 @@ public class User implements UserDetails {
         request.setCustomer(null);
     }
 
-
-    private String telegramChatId;
-
     @Override
     public String toString() {
         return "работник сервиса : " +
@@ -60,11 +62,6 @@ public class User implements UserDetails {
                 " фамилия : " + lastName + '\'' +
                 " должность : " + role;
     }
-
-    @OneToMany(mappedBy = "user")
-    private List<ServiceRequestComment> comments;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

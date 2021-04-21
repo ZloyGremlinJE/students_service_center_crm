@@ -8,16 +8,16 @@ public class TestSecurityController {
 
     @GetMapping("/director_page")
     public String getDirectorPage() {
-        return "test_security_director";
+        return "testSecurityTemplates/test_security_director";
     }
 
     @GetMapping("/manager_page")
     public String getManagerPage() {
-        return "test_security_manager";
+        return "testSecurityTemplates/test_security_manager";
     }
 
     @GetMapping("/engineer_page")
     public String getEngineerPage() {
-        return "test_security_engineer";
+        return "testSecurityTemplates/test_security_engineer";
     }
 }
