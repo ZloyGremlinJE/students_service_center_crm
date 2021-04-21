@@ -1,5 +1,7 @@
 package com.jm.students.model;
 
+import com.jm.students.model.organization.ClientOrganization;
+import com.jm.students.model.organization.ServiceCenterOrganization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -61,5 +63,27 @@ public class ServiceRequest {
     public void removeComment(ServiceRequestComment serviceRequestComment) {
         comments.remove(serviceRequestComment);
         serviceRequestComment.setServiceRequest(null);
+    }
+    @ManyToOne
+    private ClientOrganization clientOrganization;
+
+    @ManyToOne
+    private ServiceCenterOrganization serviceCenterOrganization;
+
+    @ManyToOne
+    private User service_manager;
+
+    @ManyToOne
+    private User client_employee;
+
+    @ManyToMany
+    private List<User> engineers = new ArrayList<>();
+
+    public void addEngineer(User engineer) {
+        engineers.add(engineer);
+    }
+
+    public void removeEngineer(User engineer) {
+        engineers.remove(engineer);
     }
 }
