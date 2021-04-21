@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
@@ -35,6 +36,30 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.EAGER)
+    List<ServiceRequest> requestList = new ArrayList<>();
+
+    public void addNewServiceRequest(ServiceRequest request) {
+        requestList.add(request);
+        request.setCustomer(this);
+    }
+
+    public void removeServiceRequest(ServiceRequest request) {
+        requestList.remove(request);
+        request.setCustomer(null);
+    }
+
+
+    private String telegramChatId;
+
+    @Override
+    public String toString() {
+        return "работник сервиса : " +
+                " имя : " + firstName + '\'' +
+                " фамилия : " + lastName + '\'' +
+                " должность : " + role;
+    }
 
     @OneToMany(mappedBy = "user")
     private List<ServiceRequestComment> comments;
@@ -75,4 +100,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

@@ -31,4 +31,10 @@ public class UserRepositoryImpl extends AbstractEntityRepositoryImpl<User> imple
 
         return (User) query.getSingleResult();
     }
+    @Override
+    public User getUserByTelegramId(String telegramChatId) {
+        return (User) entityManager.createQuery("select u from User u where u.telegramChatId=:telegramChatId")
+                .setParameter("telegramChatId", telegramChatId)
+                .getSingleResult();
+    }
 }

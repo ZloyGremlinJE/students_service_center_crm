@@ -37,4 +37,10 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
 
         return userRepository.update(user);
     }
+
+    @Override
+    public User getUserByTelegramId(String telegramChatId) {
+        return userRepository.getUserByTelegramId(telegramChatId);
+    }
 }
+
