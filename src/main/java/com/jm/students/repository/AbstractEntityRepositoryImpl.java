@@ -12,7 +12,7 @@ public abstract class AbstractEntityRepositoryImpl<T> implements AbstractEntityR
 
     @PersistenceContext
     private EntityManager entityManager;
-
+    
     @Override
     public T findById(Long id) {
         return entityManager.find(clazz, id);

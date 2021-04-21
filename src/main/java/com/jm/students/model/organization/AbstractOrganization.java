@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "organizations")
+@DiscriminatorColumn(name="organization_type")
 public abstract class AbstractOrganization {
 
     @Id
