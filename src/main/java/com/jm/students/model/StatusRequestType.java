@@ -1,4 +1,4 @@
-package com.jm.students.enums;
+package com.jm.students.model;
 
 /**
  * Перечисление для состояний заявок

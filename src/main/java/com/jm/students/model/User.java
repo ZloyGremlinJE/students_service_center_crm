@@ -54,4 +54,9 @@ public class User {
                 " фамилия : " + lastName + '\'' +
                 " должность : " + role;
     }
+
+    @OneToMany(mappedBy = "user")
+    private List<ServiseRequestComment> comments;
+
+
 }
