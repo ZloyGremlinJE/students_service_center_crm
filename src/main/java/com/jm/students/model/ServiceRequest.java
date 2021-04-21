@@ -1,6 +1,5 @@
 package com.jm.students.model;
 
-import com.jm.students.enums.StatusRequestType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -19,7 +19,7 @@ public class ServiceRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String vehicleNumber;
     private LocalDate dateOfCreate;
@@ -32,9 +32,12 @@ public class ServiceRequest {
 
     private String problem;
 
+    @OneToMany(mappedBy = "serviceRequest")
+    private Set<ServiceRequestComment> comments;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
             , CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "client_employee_id")
+    @JoinColumn(name = "user_id")
     private User customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
@@ -48,5 +51,15 @@ public class ServiceRequest {
     public void removeEquipmentOrder(EquipmentOrder order) {
         orders.remove(order);
         order.setRequest(null);
+    }
+
+    public void addNewComment(ServiceRequestComment serviceRequestComment) {
+        comments.add(serviceRequestComment);
+        serviceRequestComment.setServiceRequest(this);
+    }
+
+    public void removeComment(ServiceRequestComment serviceRequestComment) {
+        comments.remove(serviceRequestComment);
+        serviceRequestComment.setServiceRequest(null);
     }
 }

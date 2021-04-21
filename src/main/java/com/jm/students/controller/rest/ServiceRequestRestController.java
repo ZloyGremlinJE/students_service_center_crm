@@ -1,7 +1,7 @@
 package com.jm.students.controller.rest;
 
 import com.jm.students.DTO.ServiceRequestDTO;
-import com.jm.students.enums.StatusRequestType;
+import com.jm.students.model.StatusRequestType;
 import com.jm.students.mappers.ServiceRequestMapper;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.service.ServiceRequestService;
@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("serviceRequests")
 public class ServiceRequestRestController {
+
     private final ServiceRequestService serviceRequestService;
     private final ServiceRequestMapper serviceRequestMapper;
 
@@ -47,10 +48,12 @@ public class ServiceRequestRestController {
     }
 
     @PostMapping
-    public ResponseEntity<ServiceRequestDTO> addServiceRequest(@RequestBody ServiceRequest serviceRequest) {
+    public ResponseEntity<ServiceRequestDTO> addServiceRequest(@RequestBody String ticketText) {
+        ServiceRequest sr = new ServiceRequest();
+        sr.setProblem(ticketText);
         try {
-            serviceRequestService.saveServiceRequest(serviceRequest);
-         return new ResponseEntity<>(HttpStatus.OK);
+            serviceRequestService.saveServiceRequest(sr);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -66,13 +69,13 @@ public class ServiceRequestRestController {
         }
     }
 
-      @PutMapping("/updateStatusRequest/{id}")
+    @PutMapping("/updateStatusRequest/{id}")
     public ResponseEntity<StatusRequestType> updateStatusRequestType(@PathVariable Long id,
                                                                      @RequestBody StatusRequestType statusRequestType) {
         try {
             serviceRequestService.updateStatusRequestType(id, statusRequestType);
             return new ResponseEntity<>(statusRequestType, HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
