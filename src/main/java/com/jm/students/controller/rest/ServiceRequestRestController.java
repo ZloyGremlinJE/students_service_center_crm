@@ -26,7 +26,7 @@ public class ServiceRequestRestController {
     public ResponseEntity<ServiceRequestDTO> getOneServiceRequest(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(
-                    serviceRequestMapper.toServiceRequestDto(serviceRequestService.getServiceRequestById(id)
+                    serviceRequestMapper.toServiceRequestDto(serviceRequestService.findById(id)
                     ), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -36,7 +36,7 @@ public class ServiceRequestRestController {
     @GetMapping
     public ResponseEntity<List<ServiceRequestDTO>> getAllServiceRequests() {
         try {
-            List<ServiceRequest> listOfRequests = serviceRequestService.getAllServiceRequests();
+            List<ServiceRequest> listOfRequests = serviceRequestService.findAll();
             List<ServiceRequestDTO> listOfRequestsDTO = new ArrayList<>();
             for (ServiceRequest request : listOfRequests) {
                 listOfRequestsDTO.add(serviceRequestMapper.toServiceRequestDto(request));
@@ -52,7 +52,7 @@ public class ServiceRequestRestController {
         ServiceRequest sr = new ServiceRequest();
         sr.setProblem(ticketText);
         try {
-            serviceRequestService.saveServiceRequest(sr);
+            serviceRequestService.save(sr);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -62,7 +62,7 @@ public class ServiceRequestRestController {
     @PutMapping
     public ResponseEntity<ServiceRequestDTO> updateServiceRequest(@RequestBody ServiceRequest serviceRequest) {
         try {
-            serviceRequestService.updateServiceRequest(serviceRequest);
+            serviceRequestService.update(serviceRequest);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
