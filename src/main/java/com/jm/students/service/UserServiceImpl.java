@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 @Transactional
@@ -47,8 +48,6 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
         return userRepository.getUserByTelegramId(telegramChatId);
     }
 
-
-
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
@@ -74,7 +73,8 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
                 .toString();
         return password;
 
-
+    @Override
+    public List<User> findByIsDisabled(boolean isDisabled) {
+        return userRepository.findByIsDisabled(isDisabled);
     }
 }
-
