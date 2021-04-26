@@ -17,9 +17,13 @@ public class UserRepositoryImpl extends AbstractEntityRepositoryImpl<User> imple
 
     @Override
     public User findUserByEmail(String email) {
-        return (User) entityManager.createQuery("select u from User u where u.email = :userEmail")
-                .setParameter("userEmail", email)
-                .getSingleResult();
+        try {
+            return (User) entityManager.createQuery("select u from User u where u.email = :userEmail")
+                    .setParameter("userEmail", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return  null;
+        }
     }
 
     @Override
