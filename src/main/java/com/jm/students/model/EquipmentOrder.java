@@ -1,5 +1,6 @@
 package com.jm.students.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -15,7 +17,7 @@ public class EquipmentOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private EquipmentType equipmentType;
@@ -27,4 +29,6 @@ public class EquipmentOrder {
             , CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "service_request_id")
     private ServiceRequest request;
+
+
 }

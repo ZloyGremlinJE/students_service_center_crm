@@ -1,5 +1,6 @@
 package com.jm.students.service;
 
+import com.jm.students.model.StatusRequestType;
 import com.jm.students.model.ServiceRequest;
 import com.jm.students.repository.ServiceRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,37 +11,27 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ServiceRequestServiceImpl implements ServiceRequestService {
+public class ServiceRequestServiceImpl extends AbstractEntityServiceImpl<ServiceRequest>
+        implements ServiceRequestService {
 
     private final ServiceRequestRepository requestRepository;
 
     @Autowired
     public ServiceRequestServiceImpl(ServiceRequestRepository requestRepository) {
+        super(requestRepository);
         this.requestRepository = requestRepository;
     }
-
+    /**
+     * Метод находит заявку по {@param id},
+     * устанавливает этой заявке новый статус {@param statusRequestType}
+     * и изменяет заявку в базе
+     * @param id идентификатор заявки
+     * @param statusRequestType новый статус заявки
+     */
     @Override
-    public List<ServiceRequest> getAllServiceRequests() {
-        return requestRepository.getAllServiceRequests();
-    }
-
-    @Override
-    public void saveServiceRequest(ServiceRequest request) {
-        requestRepository.saveServiceRequest(request);
-    }
-
-    @Override
-    public void updateServiceRequest(ServiceRequest request) {
-        requestRepository.updateServiceRequest(request);
-    }
-
-    @Override
-    public void deleteServiceRequest(ServiceRequest request) {
-        requestRepository.deleteServiceRequest(request);
-    }
-
-    @Override
-    public ServiceRequest getServiceRequestById(long id) {
-        return requestRepository.getServiceRequestById(id);
+    public void updateStatusRequestType(long id, StatusRequestType statusRequestType) {
+        ServiceRequest serviceRequest = findById(id);
+        serviceRequest.setStatusRequestType(statusRequestType);
+        update(serviceRequest);
     }
 }
