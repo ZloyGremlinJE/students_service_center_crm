@@ -31,7 +31,7 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
     @Override
     public User update(User user) {
 
-        if (user.getPassword() != userRepository.findById(user.getId()).getPassword()) {
+        if (!user.getPassword().equals(userRepository.findById(user.getId()).getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 
