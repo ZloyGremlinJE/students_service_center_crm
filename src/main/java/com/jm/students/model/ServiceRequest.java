@@ -37,8 +37,7 @@ public class ServiceRequest {
     @OneToMany(mappedBy = "serviceRequest")
     private Set<ServiceRequestComment> comments;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
-            , CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_id")
     private User customer;
 
