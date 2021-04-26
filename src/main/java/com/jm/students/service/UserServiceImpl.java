@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -41,6 +42,11 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
     @Override
     public User getUserByTelegramId(String telegramChatId) {
         return userRepository.getUserByTelegramId(telegramChatId);
+    }
+
+    @Override
+    public List<User> findByIsDisabled(boolean isDisabled) {
+        return userRepository.findByIsDisabled(isDisabled);
     }
 }
 
