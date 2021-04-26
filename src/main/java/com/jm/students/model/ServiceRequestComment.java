@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "request_comments")
-public class ServiseRequestComment {
+public class ServiceRequestComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

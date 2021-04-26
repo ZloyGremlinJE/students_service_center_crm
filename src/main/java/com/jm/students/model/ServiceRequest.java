@@ -1,5 +1,7 @@
 package com.jm.students.model;
 
+import com.jm.students.model.organization.ClientOrganization;
+import com.jm.students.model.organization.ServiceCenterOrganization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +21,7 @@ public class ServiceRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String vehicleNumber;
     private LocalDate dateOfCreate;
@@ -33,10 +35,9 @@ public class ServiceRequest {
     private String problem;
 
     @OneToMany(mappedBy = "serviceRequest")
-    private Set<ServiseRequestComment> comments;
+    private Set<ServiceRequestComment> comments;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE
-            , CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_id")
     private User customer;
 
@@ -53,13 +54,35 @@ public class ServiceRequest {
         order.setRequest(null);
     }
 
-    public void addNewComment(ServiseRequestComment serviseRequestComment) {
-        comments.add(serviseRequestComment);
-        serviseRequestComment.setServiceRequest(this);
+    public void addNewComment(ServiceRequestComment serviceRequestComment) {
+        comments.add(serviceRequestComment);
+        serviceRequestComment.setServiceRequest(this);
     }
 
-    public void removeComment(ServiseRequestComment serviseRequestComment) {
-        comments.remove(serviseRequestComment);
-        serviseRequestComment.setServiceRequest(null);
+    public void removeComment(ServiceRequestComment serviceRequestComment) {
+        comments.remove(serviceRequestComment);
+        serviceRequestComment.setServiceRequest(null);
+    }
+    @ManyToOne
+    private ClientOrganization clientOrganization;
+
+    @ManyToOne
+    private ServiceCenterOrganization serviceCenterOrganization;
+
+    @ManyToOne
+    private User service_manager;
+
+    @ManyToOne
+    private User client_employee;
+
+    @ManyToMany
+    private List<User> engineers = new ArrayList<>();
+
+    public void addEngineer(User engineer) {
+        engineers.add(engineer);
+    }
+
+    public void removeEngineer(User engineer) {
+        engineers.remove(engineer);
     }
 }
