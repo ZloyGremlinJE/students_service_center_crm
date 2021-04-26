@@ -2,10 +2,16 @@ package com.jm.students.service;
 
 
 import com.jm.students.repository.AbstractEntityRepository;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
+@Cacheable(value = "myCache")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class AbstractEntityServiceImpl<T> implements AbstractEntityService<T> {
 
     private final AbstractEntityRepository<T> abstractEntityRepository;
