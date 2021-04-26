@@ -72,6 +72,7 @@ public class UserServiceImpl extends AbstractEntityServiceImpl<User> implements 
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
                 .toString();
         return password;
+    }
 
     @Override
     public List<User> findByIsDisabled(boolean isDisabled) {
