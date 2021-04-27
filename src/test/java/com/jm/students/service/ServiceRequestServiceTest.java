@@ -32,39 +32,39 @@ class ServiceRequestServiceTest {
         expected.add(sr1);
         expected.add(sr2);
 
-        Mockito.when(repo.getAllServiceRequests()).thenReturn(expected);
-        assertEquals(2, service.getAllServiceRequests().size());
+        Mockito.when(repo.findAll()).thenReturn(expected);
+        assertEquals(2, service.findAll().size());
     }
 
     @Test
     void saveServiceRequest() {
         ServiceRequest sr = new ServiceRequest();
         sr.setVehicleNumber("000");
-        service.saveServiceRequest(sr);
-        Mockito.verify(repo, Mockito.times(1)).saveServiceRequest(sr);
+        service.save(sr);
+        Mockito.verify(repo, Mockito.times(1)).save(sr);
     }
 
     @Test
     void updateServiceRequest() {
         ServiceRequest sr = new ServiceRequest();
         sr.setVehicleNumber("000");
-        service.updateServiceRequest(sr);
-        Mockito.verify(repo, Mockito.times(1)).updateServiceRequest(sr);
+        service.update(sr);
+        Mockito.verify(repo, Mockito.times(1)).update(sr);
     }
 
     @Test
     void deleteServiceRequest() {
         ServiceRequest sr = new ServiceRequest();
         sr.setVehicleNumber("000");
-        service.deleteServiceRequest(sr);
-        Mockito.verify(repo, Mockito.times(1)).deleteServiceRequest(sr);
+        service.remove(sr);
+        Mockito.verify(repo, Mockito.times(1)).remove(sr);
     }
 
     @Test
     void getServiceRequestById() {
         ServiceRequest sr = new ServiceRequest();
         sr.setVehicleNumber("000");
-        Mockito.when(repo.getServiceRequestById(sr.getId())).thenReturn(sr);
-        assertEquals(service.getServiceRequestById(sr.getId()), sr);
+        Mockito.when(repo.findById(sr.getId())).thenReturn(sr);
+        assertEquals(service.findById(sr.getId()), sr);
     }
 }

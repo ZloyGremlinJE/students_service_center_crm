@@ -110,6 +110,6 @@ public class DevProfileSetup {
         serviceRequest.setProblem(problem);
         serviceRequest.setCustomer(customer);
 
-        serviceRequestService.saveServiceRequest(serviceRequest);
+        serviceRequestService.save(serviceRequest);
     }
 }

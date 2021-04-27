@@ -3,6 +3,9 @@ package com.jm.students.repository;
 import com.jm.students.model.User;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.TypedQuery;
+import java.util.List;
+
 @Repository
 public class UserRepositoryImpl extends AbstractEntityRepositoryImpl<User> implements UserRepository {
 
@@ -14,9 +17,13 @@ public class UserRepositoryImpl extends AbstractEntityRepositoryImpl<User> imple
 
     @Override
     public User findUserByEmail(String email) {
-        return (User) entityManager.createQuery("select u from User u where u.email = :userEmail")
-                .setParameter("userEmail", email)
-                .getSingleResult();
+        try {
+            return (User) entityManager.createQuery("select u from User u where u.email = :userEmail")
+                    .setParameter("userEmail", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return  null;
+        }
     }
 
     @Override
@@ -25,4 +32,11 @@ public class UserRepositoryImpl extends AbstractEntityRepositoryImpl<User> imple
                 .setParameter("telegramChatId", telegramChatId)
                 .getSingleResult();
     }
+    @SuppressWarnings("unchecked")
+    public List<User> findByIsDisabled(boolean isDisabled) {
+        TypedQuery<User> userTypedQuery = (TypedQuery<User>) entityManager.createQuery("select u from User u where u.isDisabled=:isDisabled")
+                .setParameter("isDisabled", isDisabled);
+        return userTypedQuery.getResultList();
+    }
+
 }
