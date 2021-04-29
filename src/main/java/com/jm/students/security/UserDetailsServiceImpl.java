@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findUserByEmail(email);
 
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' not found", email));
+            throw new UsernameNotFoundException(String.format("ServiceRequest '%s' not found", email));
         }
 
         return user;

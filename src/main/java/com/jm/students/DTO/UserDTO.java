@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @NoArgsConstructor
 @Setter
@@ -25,6 +24,6 @@ public class UserDTO {
     private String username;
     private String phoneNumber;
     private Role role;
-    private List<ServiceRequestDTO> requests;
+    //private List<ServiceRequestDTO> requests;
     private Long organizationId;
 }

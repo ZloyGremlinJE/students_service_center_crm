@@ -13,7 +13,7 @@ public class TestSecurityController {
 
     @GetMapping("/manager_page")
     public String getManagerPage() {
-        return "testSecurityTemplates/test_security_manager";
+        return "service_requests_for_manager";
     }
 
     @GetMapping("/engineer_page")

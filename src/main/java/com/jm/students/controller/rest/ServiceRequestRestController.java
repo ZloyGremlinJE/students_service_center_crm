@@ -22,6 +22,11 @@ public class ServiceRequestRestController {
     private final ServiceRequestService serviceRequestService;
     private final ServiceRequestMapper serviceRequestMapper;
 
+
+
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<ServiceRequestDTO> getOneServiceRequest(@PathVariable Long id) {
         try {
@@ -33,7 +38,7 @@ public class ServiceRequestRestController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allServiceRequests")
     public ResponseEntity<List<ServiceRequestDTO>> getAllServiceRequests() {
         try {
             List<ServiceRequest> listOfRequests = serviceRequestService.findAll();
