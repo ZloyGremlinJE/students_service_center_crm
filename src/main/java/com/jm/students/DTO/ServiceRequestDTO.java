@@ -21,6 +21,7 @@ public class ServiceRequestDTO {
     private UserDTO customer;
     private UserDTO client_employee;
     private ClientOrganizationDTO clientOrganization;
+    private List<UserDTO> engineers;
     private List<EquipmentOrderDTO> orders;
     private StatusRequestType statusRequestType;
 }

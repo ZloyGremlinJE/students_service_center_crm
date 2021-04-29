@@ -1,16 +1,14 @@
-class Role {
-    id;
-    name;
-}
+
 
 class ServiceRequest {
     id;
-    firstName;
-    lastName;
-    age;
-    email;
-    password;
-    roles = [];
+    vehicleNumber;
+    dateOfCreate;
+    problem;
+    client_employee;
+    clientOrganization;
+    engineers = [];
+    statusRequestType;
 }
 
 const url_service_requests = '/adminAPI/list';

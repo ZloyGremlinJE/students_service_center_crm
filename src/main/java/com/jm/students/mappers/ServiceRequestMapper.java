@@ -19,6 +19,7 @@ public interface ServiceRequestMapper {
     @Mapping(source = "orders", target = "orders")
     @Mapping(source = "client_employee", target = "client_employee")
     @Mapping(source = "clientOrganization", target = "clientOrganization")
+    @Mapping(source = "engineers", target = "engineers")
     ServiceRequestDTO toServiceRequestDto(ServiceRequest request);
 
 }
