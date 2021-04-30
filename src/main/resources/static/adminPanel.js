@@ -226,6 +226,13 @@ $(function () {
 //         }
 //     })
 
+
+    $('#edit_user').on('click',
+        function() {
+            console.log('Произошёл клик на элементе #header');
+        }
+     );
+
     $('#edit_sr').click(function () {
         console.log("re");
         $('.nav-tabs a:last').tab('show');
