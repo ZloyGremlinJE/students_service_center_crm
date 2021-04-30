@@ -90,7 +90,7 @@ $(function () {
     let api = API();
 
     function updateUsers() {
-        // let tbody = $('#body_users_table');
+         let tbody = $('#body_srs_table');
         // let tbody_user = $('#body_user_table');
         // let head_text = $('#header_text');
         // let roles_text;
@@ -123,19 +123,21 @@ $(function () {
                 sr.clientOrganization = srs_json[i].clientOrganization;
                sr.statusRequestType = srs_json[i].statusRequestType;
                 console.log(sr);
-                // roles_text = users_json[i].roles.map(r => r.name).map(r => r.replaceAll("ROLE_", "")).join(' ');
-                // let tr = $('<tr/>')
-                //     .append($('<td/>').text(users_json[i].id))
-                //     .append($('<td/>').text(users_json[i].firstName))
-                //     .append($('<td/>').text(users_json[i].lastName))
-                //     .append($('<td/>').text(users_json[i].age))
-                //     .append($('<td/>').text(users_json[i].email))
-                //     .append($('<td/>').append($('<span/>').text(roles_text)))
-                //     .append($('<td/>')
-                //         .append('<button type="button" class="btn btn-info btn-sm ml-4 mr-2" data-user = ' + JSON.stringify(user) + ' data-toggle="modal" data-target="#updateModal">Edit</button>')
-                //         .append('<button type="button" class="btn btn-danger btn-sm"  data-user = ' + JSON.stringify(user) + '  data-toggle="modal" data-target="#deleteModal">Delete</button>')
-                //     );
-                // tbody.append(tr);
+                //roles_text = users_json[i].roles.map(r => r.name).map(r => r.replaceAll("ROLE_", "")).join(' ');
+                let tr = $('<tr/>')
+                    .append($('<td/>').text(srs_json[i].id))
+                    .append($('<td/>').text(srs_json[i].dateOfCreate))
+                    .append($('<td/>').text(srs_json[i].clientOrganization.name))
+                    .append($('<td/>').text(srs_json[i].vehicleNumber))
+                    .append($('<td/>').text(srs_json[i].problem))
+                    .append($('<td/>').text(srs_json[i].statusRequestType))
+                    .append($('<td/>').append($('<span/>').text("не определено")))
+                    .append($('<td/>')
+                        .append('<button type="button" id="edit_sr" class="btn btn-info btn-sm ml-4 mr-2">Edit</button>')
+                        .append('<button type="button" class="btn btn-danger btn-sm"  data-sr = ' + JSON.stringify(sr) + '  data-toggle="modal" data-target="#deleteModal">Delete</button>')
+                    );
+
+                tbody.append(tr);
             }
         });
 
@@ -224,34 +226,35 @@ $(function () {
 //         }
 //     })
 
-    // $('#button_edit_user').click(function () {
-    //     let new_user = new ServiceRequest();
-    //
-    //     // заполняем нового пользователя данными (у всех полей ввода на вкладке с id="newuser" атрибут class="form-control"
-    //     $('#updateModal .form-control').each(function (index, element) {
-    //         new_user[element.name] = element.value;
-    //     });
-    //     console.log(new_user);
-    //     //получаем массив выбранных ролей и добавляем их новому пользователю
-    //     let userRolesSelect = $('#user_roles_update_modal');
-    //     let selected_roles = userRolesSelect.find('option:selected').map(function () {
-    //         let role = new Role();
-    //         role.id = $(this).val();
-    //         role.name = "ROLE_" + $(this).text();
-    //         return role;
-    //     }).toArray();
-    //     new_user.roles = selected_roles;
-    //
-    //     //очищаем поля input  и селектора ролей
-    //     //отправляем нового пользователя и обновляем таблицу пользователей
-    //     api.saveUser(new_user).then(r => {
-    //         $('#updateModal').find('input').val('');
-    //         $('#user_roles_update_modal').find('option').remove();
-    //         $("#updateModal").modal('hide');
-    //         updateUsers();
-    //         $('.nav-tabs a[href="#users"]').tab('show');
-    //     });
-    // });
+    $('#edit_sr').click(function () {
+        console.log("re");
+        $('.nav-tabs a:last').tab('show');
+        // заполняем нового пользователя данными (у всех полей ввода на вкладке с id="newuser" атрибут class="form-control"
+        // $('#updateModal .form-control').each(function (index, element) {
+        //     new_user[element.name] = element.value;
+        // });
+        // console.log(new_user);
+        // //получаем массив выбранных ролей и добавляем их новому пользователю
+        // let userRolesSelect = $('#user_roles_update_modal');
+        // let selected_roles = userRolesSelect.find('option:selected').map(function () {
+        //     let role = new Role();
+        //     role.id = $(this).val();
+        //     role.name = "ROLE_" + $(this).text();
+        //     return role;
+        // }).toArray();
+        // new_user.roles = selected_roles;
+        //
+        // //очищаем поля input  и селектора ролей
+        // //отправляем нового пользователя и обновляем таблицу пользователей
+        // api.saveUser(new_user).then(r => {
+        //     $('#updateModal').find('input').val('');
+        //     $('#user_roles_update_modal').find('option').remove();
+        //     $("#updateModal").modal('hide');
+        //     updateUsers();
+        //     $('.nav-tabs a[href="#users"]').tab('show');
+        // });
+
+    });
 
     // $('#button_delete_user').click(function () {
     //     let new_user = new ServiceRequest();
